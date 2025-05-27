@@ -1,15 +1,14 @@
 setup:
 	@docker build --progress=plain -f Containerfile -t mermerd .
 
+run: STORAGE_DIRECTORY   = "$(CURDIR)/storage/"
 run:
-	@touch output.mmd
-	@docker run --rm -it --net host \
-		--mount type=bind,source="$(CURDIR)"/examples/mermerd-config.yaml,target=/root/.mermerd \
-		--mount type=bind,source="$(CURDIR)"/output.mmd,target=/root/result.mmd \
+	@docker run --rm -it \
+		--net host \
+		-v "$(STORAGE_DIRECTORY):/mnt/storage/" \
 		mermerd \
-		--runConfig "/root/.mermerd" \
+		--runConfig "/etc/mermerd/config.yml" \
 		--connectionString "mysql://root:@tcp(host.docker.internal:3306)/mysql"
 
 test:
-	@$(MAKE) setup
-	@tests/index.sh
+	@$(CURDIR)/tests/index.sh

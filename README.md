@@ -1,42 +1,24 @@
-# [mermerd-container](https://github.com/nedix/mermerd-container)
+# [mermerd-container][project]
 
 Create [Mermaid] ERD diagrams from live databases.
 
+
 ## Usage
 
-#### 1. Create an output file
 
-```shell
-touch output.mmd
-```
-
-#### 2. (Optional) Create a mermerd configuration file
-
-See 
-[documentation](https://github.com/KarnerTh/mermerd?tab=readme-ov-file#global-configuration-file)
-and
-[examples/mermerd-config.yaml](https://github.com/nedix/mermerd-container/blob/main/examples/mermerd-config.yaml)
-.
-
-#### 3. Run the mermerd command-line interface
+### 3. Run the mermerd command-line utility
 
 This example command connects to a MySQL server running on localhost port 3306.
 Replace `root:` with your `username:password` combination.
 
 ```shell
-docker run --pull always --rm -it --name mermerd \
+docker run --rm -it --pull always --name mermerd \
     --net host \
-    --mount type=bind,source="${PWD}"/output.mmd,target=/root/result.mmd \
-    --mount type=bind,source="${PWD}"/mermerd-config.yaml,target=/root/.mermerd \ # optional
-    nedix/mermerd \
+    -v "${PWD}/storage/:/mnt/storage/" \
+    mermerd \
+    --runConfig "/etc/mermerd/config.yml" \
     --connectionString "mysql://root:@tcp(host.docker.internal:3306)/mysql"
 ```
 
-<hr>
 
-## Attribution
-
-Powered by [mermerd].
-
-[mermaid]: https://mermaid.js.org
-[mermerd]: https://github.com/KarnerTh/mermerd
+[project]: https://hub.docker.com/r/nedix/mermerd

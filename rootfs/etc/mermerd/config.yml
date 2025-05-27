@@ -10,8 +10,8 @@ omitAttributeKeys: true
 # omit the constraint labels
 omitConstraintLabels: true
 
-# output file name (default "result.mmd")
-outputFileName: "result.mmd"
+# output file name
+outputFileName: "/mnt/storage/output.mmd"
 
 # schema that should be used
 schema:
