@@ -6,7 +6,7 @@ Create [Mermaid] ERD diagrams from live databases.
 ## Usage
 
 
-### 3. Run the mermerd command-line utility
+### 1. Run the mermerd command-line utility
 
 This example command connects to a MySQL server running on localhost port 3306.
 Replace `root:` with your `username:password` combination.
