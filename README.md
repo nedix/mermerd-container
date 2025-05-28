@@ -1,6 +1,6 @@
 # [mermerd-container][project]
 
-Create [Mermaid] ERD diagrams from live databases.
+Create Mermaid ERD diagrams from live databases.
 
 
 ## Usage
