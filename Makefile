@@ -3,8 +3,11 @@ setup:
 
 run: STORAGE_DIRECTORY   = "$(CURDIR)/storage/"
 run:
-	@docker run --rm -it \
+	@docker run \
 		--net host \
+		--rm \
+		-i \
+		-t \
 		-v "$(STORAGE_DIRECTORY):/mnt/storage/" \
 		mermerd \
 		--runConfig "/etc/mermerd/config.yml" \

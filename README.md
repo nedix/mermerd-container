@@ -12,8 +12,13 @@ This example command connects to a MySQL server running on localhost port 3306.
 Replace `root:` with your `username:password` combination.
 
 ```shell
-docker run --rm -it --pull always --name mermerd \
+docker run \
+    --name mermerd \
     --net host \
+    --pull always \
+    --rm \
+    -i \
+    -t \
     -v "${PWD}/storage/:/mnt/storage/" \
     mermerd \
     --runConfig "/etc/mermerd/config.yml" \
