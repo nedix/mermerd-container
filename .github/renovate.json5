@@ -23,6 +23,13 @@
       matchStrings: ["ARG MERMERD_VERSION=(?<currentValue>.*?)\\n"],
       datasourceTemplate: "github-releases",
       packageNameTemplate: "KarnerTh/mermerd",
+    }
+  ],
+  packageRules: [
+    {
+      description: "Custom versioning for Mermerd",
+      matchPackageNames: ["KarnerTh/mermerd"],
+      extractVersion: "^v(?<version>.*)$",
     },
   ],
 }

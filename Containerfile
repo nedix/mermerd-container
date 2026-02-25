@@ -1,6 +1,6 @@
 ARG ALPINE_VERSION=3.23
 ARG GO_VERSION=1.26
-ARG MERMERD_VERSION=v0.13.0
+ARG MERMERD_VERSION=0.13.0
 
 FROM golang:${GO_VERSION}-alpine${ALPINE_VERSION} AS build
 
@@ -9,7 +9,7 @@ ARG MERMERD_VERSION
 RUN apk add --virtual .build-deps \
         git \
     && export CGO_ENABLED=0  \
-    && go install github.com/KarnerTh/mermerd@${MERMERD_VERSION} \
+    && go install "github.com/KarnerTh/mermerd@v${MERMERD_VERSION}" \
     && apk del .build-deps
 
 FROM gcr.io/distroless/static
